@@ -38,6 +38,9 @@ public class App  {
 		String systemNm = "CIMS";
 
 		// 시스템id 및 토큰값은 https://ga-dev-tools.appspot.com/query-explorer/ 에서 획득, 30분단위로 토큰값은 만료됨
+		// metrics = ga:pageValue
+		// dimensions = ga:pagePath
+
 		String ids = "ga%3A213352261";
 		String token = "ya29.a0AfH6SMA7LAJsp2xJDdVWJBwFt0R7YxPR2CI_NUe7b7eO3Mz6wty_NOWkU8pfShW1ErLOL7AKmEgYrOq3VD-_wEyDl72jQVqCGDac-7E41HicIJcTMLutkwdfCkLCBKeU6N-MUKz8fOmedpXi_Zr1KmQI1sJrvpl5Yqee";
 
