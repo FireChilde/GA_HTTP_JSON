@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b641541b-707d-43cf-8389-5f4d26f960d0" name="Default Changelist" comment="" />
+    <list default="true" id="b641541b-707d-43cf-8389-5f4d26f960d0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ga_OW.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/http/json/http_json/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/http/json/http_json/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/http/json/http_json/App$ExcelRow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/http/json/http_json/App$GaResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/http/json/http_json/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/http/json/http_json/AppTest.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/http/json/http_json/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="58" column="130" selection-start-line="58" selection-start-column="130" selection-end-line="58" selection-end-column="130" />
+            <state relative-caret-position="513">
+              <caret line="52" column="61" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
               <folding>
                 <element signature="e#2049#2057#0" expanded="true" />
                 <element signature="e#1941#1951#0" expanded="true" />
@@ -30,6 +49,9 @@
     <findStrings>
       <find>filters</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="projectSyncType">
@@ -58,6 +80,7 @@
     <option name="width" value="1934" />
     <option name="height" value="1047" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -111,7 +134,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1592458313125" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1592459946232" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -158,12 +181,21 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592210928183</updated>
-      <workItem from="1592210929393" duration="23644000" />
+      <workItem from="1592210929393" duration="24120000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23644000" />
+    <option name="totallyTimeSpent" value="24120000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="2576" height="1416" extended-state="6" />
@@ -179,7 +211,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.32988048" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32988048" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32988048" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -187,7 +219,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32988048" />
       <window_info anchor="right" id="Palette" />
       <window_info anchor="right" id="Theme Preview" />
       <window_info anchor="right" id="Capture Analysis" />
@@ -222,8 +254,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/http/json/http_json/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="58" column="130" selection-start-line="58" selection-start-column="130" selection-end-line="58" selection-end-column="130" />
+        <state relative-caret-position="513">
+          <caret line="52" column="61" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
           <folding>
             <element signature="e#2049#2057#0" expanded="true" />
             <element signature="e#1941#1951#0" expanded="true" />
