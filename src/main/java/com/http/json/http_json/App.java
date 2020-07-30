@@ -35,15 +35,14 @@ public class App  {
 	public static void main( String[] args ) {
 
 		// 시스템 명
-		String systemNm = "CIMS";
+		String systemNm = "DENJOB";
 
 		// 시스템id 및 토큰값은 https://ga-dev-tools.appspot.com/query-explorer/ 에서 획득, 30분단위로 토큰값은 만료됨
 		// metrics = ga:pageValue
 		// dimensions = ga:pagePath
 
-		String ids = "ga%3A213352261";
-		String token = "ya29.a0AfH6SMA7LAJsp2xJDdVWJBwFt0R7YxPR2CI_NUe7b7eO3Mz6wty_NOWkU8pfShW1ErLOL7AKmEgYrOq3VD-_wEyDl72jQVqCGDac-7E41HicIJcTMLutkwdfCkLCBKeU6N-MUKz8fOmedpXi_Zr1KmQI1sJrvpl5Yqee";
-
+		String ids = "ga%3A190107646";
+		String token = "ya29.a0AfH6SMDAuoDOa062lOOuLqwV-7xb-s3vq6zxk6ngJA3HVGFiXgX3xmYaLYBkljxbXb2PqHqduG_r4u86s-KeoPNTtMUSZP9xxNafUIJMWK4gXYhY7P2yIMxZCQZ4fZQSoe4QFKd7Ri7qWsosrrsGnV74OwgSJQTQIIUw1Q";
 		// idx:0, 조회 월
 		// idx:1, 시작일
 		// idx:2, 종료일

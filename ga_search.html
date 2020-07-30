@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+		#loading-container {
+			position: fixed;
+			background: white;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: 10000;
+		}
+		.sk-cube-grid {
+		  width: 40px;
+		  height: 40px;
+		  margin: 100px auto;
+		}
+
+		.sk-cube-grid .sk-cube {
+		  width: 33%;
+		  height: 33%;
+		  background-color: #88f;
+		  float: left;
+		  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+		          animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+		}
+		.sk-cube-grid .sk-cube1 {
+		  -webkit-animation-delay: 0.2s;
+		          animation-delay: 0.2s; }
+		.sk-cube-grid .sk-cube2 {
+		  -webkit-animation-delay: 0.3s;
+		          animation-delay: 0.3s; }
+		.sk-cube-grid .sk-cube3 {
+		  -webkit-animation-delay: 0.4s;
+		          animation-delay: 0.4s; }
+		.sk-cube-grid .sk-cube4 {
+		  -webkit-animation-delay: 0.1s;
+		          animation-delay: 0.1s; }
+		.sk-cube-grid .sk-cube5 {
+		  -webkit-animation-delay: 0.2s;
+		          animation-delay: 0.2s; }
+		.sk-cube-grid .sk-cube6 {
+		  -webkit-animation-delay: 0.3s;
+		          animation-delay: 0.3s; }
+		.sk-cube-grid .sk-cube7 {
+		  -webkit-animation-delay: 0s;
+		          animation-delay: 0s; }
+		.sk-cube-grid .sk-cube8 {
+		  -webkit-animation-delay: 0.1s;
+		          animation-delay: 0.1s; }
+		.sk-cube-grid .sk-cube9 {
+		  -webkit-animation-delay: 0.2s;
+		          animation-delay: 0.2s; }
+
+		@-webkit-keyframes sk-cubeGridScaleDelay {
+		  0%, 70%, 100% {
+		    -webkit-transform: scale3D(1, 1, 1);
+		            transform: scale3D(1, 1, 1);
+		  } 35% {
+		    -webkit-transform: scale3D(0, 0, 1);
+		            transform: scale3D(0, 0, 1); 
+		  }
+		}
+
+		@keyframes sk-cubeGridScaleDelay {
+		  0%, 70%, 100% {
+		    -webkit-transform: scale3D(1, 1, 1);
+		            transform: scale3D(1, 1, 1);
+		  } 35% {
+		    -webkit-transform: scale3D(0, 0, 1);
+		            transform: scale3D(0, 0, 1);
+		  } 
+		}
+
+
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+	<script>
+		
+
+		$(function() {
+
+			var originRows = []
+				, onTypeTerm = undefined
+				, allHtml = '';
+			
+			function onSpinner(on) {
+				$('#search-spinner').css('visibility', on ? 'visible' : 'hidden');
+				
+			}
+
+			function onLoadData() {
+				$('#login-panel').css('display', 'none');
+				$('#content-panel').css('display', 'block');
+
+				var allCount = { '04': 0, '05': 0, '06': 0 }
+				originRows.forEach(function(row) {
+					allCount['04'] += row['04']
+					allCount['05'] += row['05']
+					allCount['06'] += row['06']
+				})
+
+				allHtml = "<tr><td>전체 개수</td><td>"+ allCount['04'] +"</td><td>"+ allCount['05'] +"</td><td>"+ allCount['06'] +"</td></tr>"
+
+				contentSearch();
+
+			}
+
+			function onLoading(on) {
+				$('#loading-container').css('display', on ? 'block' : 'none');
+			}
+
+			
+
+			onLoading(false);
+			onSpinner(false);
+
+
+			function contentSearch(term) {
+				var rawHtml = '';
+
+				if(term && term.length > 2) {
+
+					var sCount = { '04': 0, '05': 0, '06': 0 }
+
+					rawHtml = originRows.filter(function(row) {
+						return row.url.includes(term)
+					}).map(function(row) {
+						sCount['04'] += row['04']
+						sCount['05'] += row['05']
+						sCount['06'] += row['06']
+						return "<tr><td>"+ row.url.replace(term, "<span style='background:#FFFF00'>"+term+"</span>") +"</td><td>"+ row['04'] +"</td><td>"+ row['05'] +"</td><td>"+ row['06'] +"</td></tr>"
+					}).join('');
+
+					rawHtml = "<tr><td>검색어 [ "+ term +" ] 전체 결과</td><td>"+ sCount['04'] +"</td><td>"+ sCount['05'] +"</td><td>"+ sCount['06'] +"</td></tr>" + rawHtml;
+				} else {
+					rawHtml = allHtml;
+				}
+
+
+				$('#tbody-content').html(rawHtml);
+				onSpinner(false);
+
+			}
+
+			$('#content-search-input').keyup(function() {
+				if(onTypeTerm) clearTimeout(onTypeTerm)
+				var term = $(this).val();
+				term = !term ? '' : term.trim();
+
+				onTypeTerm = setTimeout(function() {
+					onSpinner(true);
+					setTimeout(function() {
+						contentSearch(term)
+					}, 100)
+
+				}, 500)
+				
+				
+
+			})
+
+			function search(credential) {
+				
+				
+				var dates = [
+					[ '2020-04-01', '2020-04-30', '04' ],
+					[ '2020-05-01', '2020-05-31', '05' ],
+					[ '2020-06-01', '2020-06-30', '06' ]
+				]
+
+
+				var isFail = false;
+				var rowMap = {};
+				dates.forEach(function(date, idx) {
+					if(isFail) return;
+					var hasNextPage = true;
+					var page = -1;
+					var datePerPage = 5000;
+					
+
+					while(hasNextPage) {
+						
+						page++;
+						var startIdx = (page * datePerPage) + 1
+
+
+						var url = 'https://www.googleapis.com/analytics/v3/data/ga'
+									+ '?ids=' + credential[0]
+									+ '&access_token=' + credential[1]
+									+ '&start-date=' + date[0]
+									+ '&end-date=' + date[1]
+									+ '&start-index=' + startIdx
+									+ '&max-results=' + datePerPage
+									+ '&metrics=ga%3Apageviews'
+									+ '&dimensions=ga%3ApagePath'
+									+ '&sort=-ga%3Apageviews'
+									;
+						
+						
+						
+						$.ajax({
+							url: url,
+							async: false
+						})
+						.done(function(res) {
+
+							var rows = res.rows;
+							hasNextPage = rows.length == datePerPage;
+
+							
+
+							rows.forEach(function(row) {
+								if(!rowMap[row[0]]) rowMap[row[0]] = { url: row[0], '04': 0, '05': 0, '06': 0 }
+								rowMap[row[0]][date[2]] = Number(row[1])
+							})
+
+
+							
+							if(!hasNextPage && idx == dates.length - 1) {
+								Object.keys(rowMap).forEach(function(key) {
+									originRows.push(rowMap[key])
+								})
+
+								onLoading(false)
+								onLoadData();
+							}
+						})
+						.fail(function(err) {
+							onLoading(false);
+							hasNextPage = false;
+							isFail = true;
+							alert('조회실패 토큰이 만료되거나 요청회수를 초과하였습니다.');
+						})
+						
+						
+					}
+				})
+			}
+
+			$('#ga-btn-search').click(function() {
+				var ids = $('#serviceIds').val()
+				, token = $('#serviceToken').val();
+
+				if(!ids || !token) {
+					alert('아이디 혹은 토큰을 입력해주세요.')
+					return;
+				}
+
+				onLoading(true);
+				
+				setTimeout(function() {
+					search([ids, token]);
+				}, 100)
+
+			})
+
+			
+		})
+
+
+	</script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body>
+	<div id="loading-container">
+		<div class="sk-cube-grid">
+		  <div class="sk-cube sk-cube1"></div>
+		  <div class="sk-cube sk-cube2"></div>
+		  <div class="sk-cube sk-cube3"></div>
+		  <div class="sk-cube sk-cube4"></div>
+		  <div class="sk-cube sk-cube5"></div>
+		  <div class="sk-cube sk-cube6"></div>
+		  <div class="sk-cube sk-cube7"></div>
+		  <div class="sk-cube sk-cube8"></div>
+		  <div class="sk-cube sk-cube9"></div>
+		</div>
+	</div>
+	
+
+	<div id="ga-container" class="d-flex">
+		<div id="login-panel" class="mt-5" style="width: 80%; margin: auto">
+			<div class="alert alert-primary" role="alert">https://ga-dev-tools.appspot.com/query-explorer/ 에서 서비스ID 및 토큰 값 획득 가능합니다.</div>
+			  <div class="form-group">
+			    <label for="serviceIds">서비스 ID</label>
+			    <input type="text" class="form-control" id="serviceIds" placeholder="ga%3A180643513" value="ga%3A213336196">
+			  </div>
+			  <div class="form-group">
+			    <label for="serviceToken">토큰</label>
+			    <input type="text" class="form-control" id="serviceToken" placeholder="ya29.a0AfH6SMAv6tpRjm6CSQ9kK4hPi1OH2GuBBDKv6ESR8d0kbLuuk9Sk5lZHaI6130Ony4sL7C8yHopVlK474ans3PMLECbTMbaot90OLFIxace-vDcyVABn-f7q9rDCRLDRFjW98h4SUrf47stN_1rzXD3QPwrBgTf8xwZB"
+			    value="ya29.a0AfH6SMB8EB_49n4eVH0oi3TypYo1g_OCYBYZEpXF_AgWjgjavuqfLQY6zjIn5LeHQCHXLHuSoAaFIPbi3YoWKq6SwNQJqGIVIXPASRGEitHnNvHGm8H1ZQyWoA8NQGcYpNiIL2ChTpT5hizqTzhHNz_KbAdcwBmtg8WA"
+			    >
+			  </div>
+			  
+			  
+
+			  <button id="ga-btn-search" type="submit" class="btn btn-primary mt-5">조회</button>
+		</div>
+
+		<div id="content-panel" class="m-5" style="display: none; width: 80%; margin: auto;">
+			
+			<input id="content-search-input" type="text" class="form-control" style="width: 500px; display: inline-block" placeholder="URL 검색">
+			<i id="search-spinner" class="fa fa-spinner fa-spin ml-2" style="color: #88f; font-size: 20px;"></i>
+
+			<table class="table mt-3">
+				<colgroup>
+					<col width="61%">
+					<col width="13%">
+					<col width="13%">
+					<col width="13%">
+				</colgroup>	
+				<thead>
+					<tr>
+						<th>URL</th>
+						<th>4월</th>
+						<th>5월</th>
+						<th>6월</th>
+					</tr>
+				</thead>
+				<tbody id="tbody-content"></tbody>
+			</table>
+
+
+		</div>
+	</div>
+
+</body>
+</html>
